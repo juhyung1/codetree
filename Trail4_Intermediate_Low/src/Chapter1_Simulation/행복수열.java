@@ -20,8 +20,11 @@ public class 행복수열 {
 
 		for (int i = 0; i < n; i++) {
 
-			int rCount = 1;
-			int cCount = 1;
+			int cnt1 = 1;
+			int cnt2 = 1;
+			
+			boolean isOk1 = false;
+			boolean isOk2 = false;
 
 			if (m == 1) {
 				result += 2;
@@ -29,29 +32,31 @@ public class 행복수열 {
 			}
 			for(int j = 1; j < n; j++) {
 				if(grid[i][j] == grid[i][j-1]) {
-					rCount++;
-					if(rCount == m) {
-						result++;
-						break;
+					cnt1++;
+					if(cnt1 == m) {
+						isOk1 = true;
 					}
 				}
 				else {
-					rCount = 1;
+					cnt1 = 1;
 				}
 				
 				if(grid[j][i] == grid[j-1][i]) {
-					cCount++;
-					if(cCount == m) {
-						result++;
-						break;
+					cnt2++;
+					if(cnt2 == m) {
+						isOk2 = true;
 					}
 				}
 				else {
-					cCount = 1;
+					cnt2 = 1;
 				}
 			}
-			
-			
+			if(isOk1) {
+				result++;
+			}
+			if(isOk2) {
+				result++;
+			}		
 
 		}
 		System.out.println(result);
